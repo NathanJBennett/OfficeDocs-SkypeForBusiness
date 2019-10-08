@@ -73,6 +73,23 @@ You can manage the transcription settings for your users using voicemail policie
  **PS C:\\> Get-CsOnlineVoicemailPolicy**
   
 ![Get-CsOnlineVoiceMailPolicy results window.](media/6cea8310-2d71-4b95-8d36-688472845727.png)
+
+### Setting up Protected Voicemail
+
+Cloud voicemail will use Exchange Transport Rules to set up encrypted voicemail. Cloud voicemail simply sends the email with the attached voicemail. To protect these messages, you’ll need to setup rules in the Exchange admin portal.
+Go to Mail Flow --> Rules --> hit the down arrow to the right of the + button and select “Apply Office 365 Message Encryption and rights protection to messages: 
+
+ ![CreateEACMailFlowPolicy](media/eac_create_mailflow_protected_vm_policy.jpg)
+
+Name the policy, under Apply this rule if --> The message properties --> Include this type --> select “Voice mail” from the drop down.
+Under Do the following select “Do not forward” in the RMS template:
+ 
+  ![CreateEACMailFlowPolicyRule](media/eac_create_mailflow_rules.jpg)
+
+They can scope this out by adding additional rules (let’s say to only to apply to a certain SG or set of users).
+
+User’s that receive protected voicemails can listen to them by calling to listen to their voicemail, playing in outlook, owa or outlook mobile. Playing from the SFB client is not supported.
+
   
 ### Turning off transcription for your organization
 
